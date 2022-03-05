@@ -100,6 +100,9 @@ function control(e) {
         pacmanCurrentIndex % width !== 0
       )
         pacmanCurrentIndex -= 1;
+      if (pacmanCurrentIndex === 365) {
+        pacmanCurrentIndex = 391;
+      }
       break;
     //   right
     case 39:
@@ -109,6 +112,9 @@ function control(e) {
         pacmanCurrentIndex % width < width - 1
       )
         pacmanCurrentIndex += 1;
+      if (pacmanCurrentIndex === 391) {
+        pacmanCurrentIndex = 364;
+      }
       break;
 
     default:
