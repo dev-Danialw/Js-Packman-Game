@@ -140,7 +140,9 @@ function pacDotEaten() {
 function powerPelletEaten() {
   //  pacman contains class of power-pellet
   if (squares[pacmanCurrentIndex].classList.contains("power-pellet")) {
-    //  add 10 in score
+    // removing class of power-pellet
+    squares[pacmanCurrentIndex].classList.remove("power-pellet");
+    // add 10 in score
     score += 10;
     // change ghosts to isScared
     ghosts.forEach((ghost) => (ghost.isScared = true));
@@ -192,7 +194,7 @@ function moveGhost(ghost) {
     ) {
       // removing ghost
       squares[ghost.currentIndex].classList.remove(ghost.className);
-      squares[ghost.currentIndex].classList.remove("ghost");
+      squares[ghost.currentIndex].classList.remove("ghost", "scared-ghost");
       // add direction to current Index
       ghost.currentIndex += direction;
       // add ghost class
@@ -200,6 +202,11 @@ function moveGhost(ghost) {
       squares[ghost.currentIndex].classList.add("ghost");
     } else
       direction = directions[Math.floor(Math.random() * directions.length)];
+
+    //  if ghost is scared
+    if (ghost.isScared) {
+      squares[ghost.currentIndex].classList.add("scared-ghost");
+    }
   }, ghost.speed);
 }
 // clearInterval(ghost.timerId);
