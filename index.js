@@ -207,6 +207,24 @@ function moveGhost(ghost) {
     if (ghost.isScared) {
       squares[ghost.currentIndex].classList.add("scared-ghost");
     }
+    // eating the scared ghost
+    if (
+      ghost.isScared &&
+      squares[ghost.currentIndex].classList.contains("pacman")
+    ) {
+      // remove classNames ghost.classname, 'ghost', 'scared-ghost'
+      squares[ghost.currentIndex].classList.remove(
+        ghost.className,
+        "ghost",
+        "scared-ghost"
+      );
+      // change ghosts currentIndex back to its startIndex
+      ghost.currentIndex = ghost.startIndex;
+      // add a score of 100
+      score += 100;
+      // re-add classnames of ghost.className and 'ghost' to the ghost new postions
+      squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
+    }
   }, ghost.speed);
 }
 // clearInterval(ghost.timerId);
