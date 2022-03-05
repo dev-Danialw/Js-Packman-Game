@@ -74,18 +74,37 @@ squares[pacmanCurrentIndex].classList.add("pacman");
 function control(e) {
   squares[pacmanCurrentIndex].classList.remove("pacman");
   switch (e.keyCode) {
+    //  down
     case 40:
-      if (pacmanCurrentIndex + width < width * width)
+      if (
+        !squares[pacmanCurrentIndex + width].classList.contains("wall") &&
+        pacmanCurrentIndex + width < width * width
+      )
         pacmanCurrentIndex += width;
       break;
+    //   up
     case 38:
-      if (pacmanCurrentIndex - width >= 0) pacmanCurrentIndex -= width;
+      if (
+        !squares[pacmanCurrentIndex - width].classList.contains("wall") &&
+        pacmanCurrentIndex - width >= 0
+      )
+        pacmanCurrentIndex -= width;
       break;
+    //   left
     case 37:
-      if (pacmanCurrentIndex % width !== 0) pacmanCurrentIndex -= 1;
+      if (
+        !squares[pacmanCurrentIndex - 1].classList.contains("wall") &&
+        pacmanCurrentIndex % width !== 0
+      )
+        pacmanCurrentIndex -= 1;
       break;
+    //   right
     case 39:
-      if (pacmanCurrentIndex % width < width - 1) pacmanCurrentIndex += width;
+      if (
+        !squares[pacmanCurrentIndex + 1].classList.contains("wall") &&
+        pacmanCurrentIndex % width < width - 1
+      )
+        pacmanCurrentIndex += 1;
       break;
 
     default:
