@@ -34,6 +34,7 @@ body {
 }
 
 .pacman {
-  background-color: yellow;
+  background-color: rgb(207, 207, 9);
   border-radius: 7.5px;
+  border: none;
 }
