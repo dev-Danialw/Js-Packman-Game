@@ -15,7 +15,7 @@ body {
 .grid div {
   width: 15px;
   height: 15px;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .pac-dot {
